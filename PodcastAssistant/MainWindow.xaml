@@ -1,0 +1,72 @@
+<Window x:Class="PodcastAssistant.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PodcastAssistant"
+        mc:Ignorable="d"
+        Title="Podcast Assistant" Height="720" Width="1080">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/> <!-- Title for Transcription -->
+            <RowDefinition Height="*"/>    <!-- Transcription Area -->
+            <RowDefinition Height="Auto"/> <!-- Title for Q&A -->
+            <RowDefinition Height="Auto"/> <!-- User Question Area -->
+            <RowDefinition Height="Auto"/> <!-- Button -->
+            <RowDefinition Height="*"/>    <!-- AI Answer Area -->
+            <RowDefinition Height="Auto"/> <!-- Audio Controls Row -->
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Podcast Transcription Area -->
+        <Label Content="Podcast Transcription:" Grid.Row="0" FontWeight="Bold" Margin="0,0,0,5"/>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <TextBlock x:Name="TranscriptionTextBlock" 
+                       TextWrapping="Wrap" 
+                       Background="#FFE0E0E0" 
+                       Padding="5"
+                       Text="[Podcast transcription will appear here...]"/>
+        </ScrollViewer>
+
+        <!-- Q&A Section -->
+        <Label Content="Question & Answer:" Grid.Row="2" FontWeight="Bold" Margin="0,10,0,5"/>
+        
+        <!-- User Question Input Area -->
+        <ScrollViewer Grid.Row="3" VerticalScrollBarVisibility="Auto" MaxHeight="100">
+            <TextBox x:Name="UserQuestionTextBox"
+                     AcceptsReturn="True" 
+                     TextWrapping="Wrap"
+                     MinLines="3"
+                     VerticalScrollBarVisibility="Auto"
+                     Text="[Type your question here...]" 
+                     Padding="5"/>
+        </ScrollViewer>
+
+        <!-- Submit Button -->
+        <Button x:Name="AskAiButton" 
+                Content="Ask AI" 
+                Grid.Row="4" 
+                HorizontalAlignment="Right" 
+                Margin="0,10,0,10" 
+                Padding="10,5"
+                Click="AskAiButton_Click_Placeholder"/>
+
+        <!-- AI Answer Display Area -->
+        <ScrollViewer Grid.Row="5" VerticalScrollBarVisibility="Auto">
+            <TextBlock x:Name="AiAnswerTextBlock" 
+                       TextWrapping="Wrap" 
+                       Background="#FFD8F0DA" 
+                       Padding="5"
+                       Text="[AI's answer will appear here...]"/>
+        </ScrollViewer>
+        
+        <!-- Audio Recording Controls -->
+        <StackPanel Grid.Row="6" Orientation="Horizontal" Margin="0,10,0,0">
+            <Button x:Name="StartRecordingButton" Content="Start Recording" Margin="0,0,5,0" Padding="10,5" Click="StartRecordingButton_Click"/>
+            <Button x:Name="StopRecordingButton" Content="Stop Recording" IsEnabled="False" Margin="0,0,10,0" Padding="10,5" Click="StopRecordingButton_Click"/>
+            <TextBlock x:Name="RecordingStatusTextBlock" Text="Status: Not Recording" VerticalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</Window>

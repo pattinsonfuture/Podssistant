@@ -1,0 +1,102 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>PodcastAssistant</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NAudio" Version="2.2.1" />
+    <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.38.0" /> <!-- Check for latest stable version if possible -->
+    <PackageReference Include="Azure.AI.OpenAI" Version="1.0.0-beta.17" /> <!-- Check for latest stable/beta version -->
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Hi_pod.table">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
+create_file_with_block
+PodcastAssistant/App.xaml
+<Application x:Class="PodcastAssistant.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:PodcastAssistant"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
+create_file_with_block
+PodcastAssistant/App.xaml.cs
+using System;
+using System.Windows;
+
+namespace PodcastAssistant
+{
+    public partial class App : Application
+    {
+    }
+}
+create_file_with_block
+PodcastAssistant/MainWindow.xaml
+<Window x:Class="PodcastAssistant.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PodcastAssistant"
+        mc:Ignorable="d"
+        Title="Podcast Assistant - Basic" Height="600" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/> 
+            <RowDefinition Height="*"/>   
+            <RowDefinition Height="Auto"/> 
+            <RowDefinition Height="Auto"/> 
+            <RowDefinition Height="Auto"/> 
+            <RowDefinition Height="*"/>    
+        </Grid.RowDefinitions>
+
+        <Label Content="Podcast Transcription:" Grid.Row="0" FontWeight="Bold"/>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <TextBlock x:Name="TranscriptionTextBlock" TextWrapping="Wrap" Background="#FFE0E0E0" Padding="5" Text="[Transcription...]"/>
+        </ScrollViewer>
+
+        <Label Content="Question & Answer:" Grid.Row="2" FontWeight="Bold" Margin="0,10,0,0"/>
+        <TextBox x:Name="UserQuestionTextBox" Grid.Row="3" MinLines="2" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Padding="5" Margin="0,5,0,5" Text="[User question...]"/>
+        
+        <Button x:Name="AskAiButton" Content="Ask AI" Grid.Row="4" HorizontalAlignment="Right" Padding="10,5" Click="AskAiButton_Click_Placeholder"/>
+        
+        <ScrollViewer Grid.Row="5" VerticalScrollBarVisibility="Auto" Margin="0,5,0,0">
+            <TextBlock x:Name="AiAnswerTextBlock" TextWrapping="Wrap" Background="#FFD8F0DA" Padding="5" Text="[AI Answer...]"/>
+        </ScrollViewer>
+    </Grid>
+</Window>
+create_file_with_block
+PodcastAssistant/MainWindow.xaml.cs
+using System;
+using System.Windows;
+
+namespace PodcastAssistant
+{
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        // Placeholder for the Ask AI button click
+        private void AskAiButton_Click_Placeholder(object sender, RoutedEventArgs e)
+        {
+            // This is a placeholder. Actual logic will be different.
+            AiAnswerTextBlock.Text = "Ask AI button clicked. Processing...";
+        }
+    }
+}
