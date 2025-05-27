@@ -1,0 +1,4 @@
+// This is a placeholder for the "Hi pod" wake word model file.
+// Generate your actual .table file using Azure Speech Studio
+// and replace this file with it in the project.
+// Ensure this file is set to "Copy to Output Directory: PreserveNewest" or "Copy if newer".

@@ -1,0 +1,4 @@
+sounddevice
+numpy
+azure-cognitiveservices-speech
+openai>=1.0.0
