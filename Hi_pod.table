@@ -1,0 +1,12 @@
+// This is a placeholder file for the "Hi pod" wake word model.
+//
+// To use actual wake word detection:
+// 1. Go to Azure Speech Studio (https://speech.microsoft.com/).
+// 2. Create a Custom Keyword project.
+// 3. Train a model for your keyword (e.g., "Hi pod").
+// 4. Download the model. It will be a .table file (e.g., Hi_pod.table).
+// 5. Replace this placeholder file with your actual .table model file.
+// 6. Ensure this file is in the same directory as podcast_assistant.py or update the path in WakeWordDetector.
+//
+// The content of this file does not matter for the placeholder; it's the presence and name.
+Placeholder content for Hi_pod.table

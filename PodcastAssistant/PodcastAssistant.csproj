@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>PodcastAssistant</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NAudio" Version="2.2.1" />
+    <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.38.0" /> <!-- Check for latest stable version if possible -->
+    <PackageReference Include="Azure.AI.OpenAI" Version="1.0.0-beta.17" /> <!-- Check for latest stable/beta version -->
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Hi_pod.table">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
